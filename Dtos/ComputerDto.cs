@@ -31,4 +31,3 @@ namespace computer_store_MVC.Dtos
         public string ImageUrl { get; set; }
     }
 }
-}
