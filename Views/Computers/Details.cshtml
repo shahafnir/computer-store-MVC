@@ -1,0 +1,21 @@
+﻿@model computer_store_MVC.Dtos.ComputerDto
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="computer-details-container">
+    <h2>@Model.Manufacturer: @Model.Model</h2>
+    <div class="content">
+        <img src="@Model.ImageUrl" />
+        <div class="details">
+            <p>Manufacturer: @Model.Manufacturer</p>
+            <p>Model: @Model.Model</p>
+            <p>Screen: @Model.Screen"</p>
+            <p>CPU: @Model.CPU</p>
+            <p>RAM: @Model.RAM</p>
+            <p>Storage: @Model.Storage</p>
+            <p>Price: @Model.PriceILS ILS</p>
+        </div>
+    </div>
+</div>

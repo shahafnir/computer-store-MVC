@@ -20,6 +20,9 @@ namespace computer_store_MVC.Models
         public string CPU { get; set; }
         [Required]
         [Range(1, int.MaxValue)]
+        public int Screen { get; set; }
+        [Required]
+        [Range(1, int.MaxValue)]
         public int RAM { get; set; }
         [Required]
         [Range(1, int.MaxValue)]

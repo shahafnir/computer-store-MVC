@@ -1,0 +1,53 @@
+﻿@model computer_store_MVC.Dtos.ComputerDto
+@{
+    ViewBag.Title = "ComputerForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Computer Details</h2>
+@using (Html.BeginForm("Save", "Computers", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Manufacturer)
+        @Html.TextBoxFor(c => c.Manufacturer, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Manufacturer)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Model)
+        @Html.TextBoxFor(c => c.Model, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Model)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Screen)
+        @Html.TextBoxFor(c => c.Screen, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Screen)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.CPU)
+        @Html.TextBoxFor(c => c.CPU, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.CPU)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.RAM)
+        @Html.TextBoxFor(c => c.RAM, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.RAM)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Storage)
+        @Html.TextBoxFor(c => c.Storage, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Storage)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.PriceILS)
+        @Html.TextBoxFor(c => c.PriceILS, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.PriceILS)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.ImageUrl)
+        @Html.TextBoxFor(c => c.ImageUrl, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.ImageUrl)
+    </div>
+    @Html.HiddenFor(c => c.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

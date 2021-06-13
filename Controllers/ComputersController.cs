@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using computer_store_MVC.Models;
+using computer_store_MVC.Dtos;
+using computer_store_MVC.ViewModels;
 
 namespace computer_store_MVC.Controllers
 {
@@ -20,12 +23,43 @@ namespace computer_store_MVC.Controllers
         // GET: Computers
         public ActionResult Index()
         {
-            List<Computer> computers = new List<Computer>()
-        {
-            new Computer(1, "HP", "P122","i-7700k",32,500,4000,"https://www.hp.com/us-en/shop/app/assets/images/product/3C627UA%23ABA/center_facing.png?_=1595408015124")
-        };
+            List<Computer> computers = _context.Computers.ToList();
+            var computersDto = computers.Select(Mapper.Map<Computer, ComputerDto>).ToList();
 
-            return View();
+            var viewModel = new ComputersViewModel()
+            {
+                Computers = computersDto
+            };
+
+            return View(viewModel);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var computer = _context.Computers.SingleOrDefault(comp => comp.Id == id);
+            if (computer == null) return HttpNotFound();
+
+            var computerDto = Mapper.Map<Computer, ComputerDto>(computer);
+
+            return View(computerDto);
+        }
+
+        public ActionResult New()
+        {
+            var computer = new ComputerDto();
+
+            return View("ComputerForm", computer);
+        }
+
+        public ActionResult Save(ComputerDto computerDto)
+        {
+            if (!ModelState.IsValid) return View("ComputerForm", computerDto);
+
+            var computer = Mapper.Map<ComputerDto, Computer>(computerDto);
+            _context.Computers.Add(computer);
+
+            _context.SaveChanges();
+            return RedirectToAction("", "Computers");
         }
     }
 }

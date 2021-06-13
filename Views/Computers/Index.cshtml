@@ -1,8 +1,32 @@
-﻿
+﻿@model computer_store_MVC.ViewModels.ComputersViewModel
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Computers</h2>
+@{
+    var computers = Model.Computers;
+}
 
+<h2>Our Computers</h2>
+
+@if (computers.Count == 0)
+{
+    <div class="alert-info">There are no computers for sale.</div>
+}
+else
+{
+    <div class="computers">
+        @foreach (var computer in computers)
+        {
+            <a href="@("/computers/details/"+@computer.Id)">
+                <div class="computers__card">
+                    <img src="@computer.ImageUrl" />
+                    <p>@computer.Manufacturer - @computer.Model</p>
+                    <p>@computer.Screen"</p>
+                </div>
+            </a>
+        }
+    </div>
+}
