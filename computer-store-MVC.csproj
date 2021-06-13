@@ -183,6 +183,14 @@
     <Compile Include="Migrations\202106130936566_Initial.Designer.cs">
       <DependentUpon>202106130936566_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106131000500_AutoMapperAdded.cs" />
+    <Compile Include="Migrations\202106131000500_AutoMapperAdded.Designer.cs">
+      <DependentUpon>202106131000500_AutoMapperAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106131040163_addDbSet.cs" />
+    <Compile Include="Migrations\202106131040163_addDbSet.Designer.cs">
+      <DependentUpon>202106131040163_addDbSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -272,6 +280,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202106130936566_Initial.resx">
       <DependentUpon>202106130936566_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106131000500_AutoMapperAdded.resx">
+      <DependentUpon>202106131000500_AutoMapperAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106131040163_addDbSet.resx">
+      <DependentUpon>202106131040163_addDbSet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

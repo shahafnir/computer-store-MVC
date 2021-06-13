@@ -22,7 +22,7 @@ namespace computer_store_MVC.Models
         [Range(1, int.MaxValue)]
         public int RAM { get; set; }
         [Required]
-        [StringLength(255)]
+        [Range(1, int.MaxValue)]
         public int Storage { get; set; }
         [Required]
         [Range(1, int.MaxValue)]
