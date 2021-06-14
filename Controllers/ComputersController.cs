@@ -46,19 +46,52 @@ namespace computer_store_MVC.Controllers
 
         public ActionResult New()
         {
-            var computer = new ComputerDto();
+            var computerDto = new ComputerDto();
 
-            return View("ComputerForm", computer);
+            return View("ComputerForm", computerDto);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var computer = _context.Computers.SingleOrDefault(c => c.Id == id);
+
+            if (computer == null) return HttpNotFound();
+
+            var computerDto = Mapper.Map<Computer, ComputerDto>(computer);
+
+            return View("ComputerForm", computerDto);
         }
 
         public ActionResult Save(ComputerDto computerDto)
         {
             if (!ModelState.IsValid) return View("ComputerForm", computerDto);
 
-            var computer = Mapper.Map<ComputerDto, Computer>(computerDto);
-            _context.Computers.Add(computer);
+            if (computerDto.Id == 0)
+            {
+                var computer = Mapper.Map<ComputerDto, Computer>(computerDto);
+                _context.Computers.Add(computer);
+            }
+            else
+            {
+                var computerInDb = _context.Computers.Single(c => c.Id == computerDto.Id);
+                Mapper.Map(computerDto, computerInDb);
+            }
+
 
             _context.SaveChanges();
+            return RedirectToAction("", "Computers");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var computerInDb = _context.Computers.SingleOrDefault(c => c.Id == id);
+
+            if (computerInDb == null)
+                return HttpNotFound();
+
+            _context.Computers.Remove(computerInDb);
+            _context.SaveChanges();
+
             return RedirectToAction("", "Computers");
         }
     }

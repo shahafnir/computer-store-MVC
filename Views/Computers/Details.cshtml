@@ -18,4 +18,12 @@
             <p>Price: @Model.PriceILS ILS</p>
         </div>
     </div>
+    <div class="buttons-container">
+        <button class="btn btn-info">
+            @Html.ActionLink("Edit", "Edit", "Computers", new { id = Model.Id }, null)
+        </button>
+        <button class="btn btn-info">
+            @Html.ActionLink("Delete", "Delete", "Computers", new { id = Model.Id }, null)
+        </button>
+    </div>
 </div>
